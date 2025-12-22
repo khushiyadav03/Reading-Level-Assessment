@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Level Assessment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Reading Level Assessment</h1>
+            <p>Analyze text readability and predict grade level instantly.</p>
+        </header>
+
+        <main class="card">
+            <form method="post">
+                <div class="form-group">
+                    <label for="content">Enter Text to Analyze:</label>
+                    <textarea name="content" id="content"
+                        placeholder="Paste your text here (minimum 40 words recommended)..."
+                        required>{{ request.form['content'] if request.form['content'] else '' }}</textarea>
+                </div>
+                <button type="submit" class="btn-primary">Analyze Text</button>
+            </form>
+
+            {% if warning %}
+            <div class="warning-container">
+                {{ warning }}
+            </div>
+            {% endif %}
+
+            {% if score is not none %}
+            <div class="results">
+                <div class="result-item">
+                    <span class="result-label">Readability Score</span>
+                    <span class="result-value">{{ score }}</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Predicted Grade</span>
+                    <span class="result-value">{{ grade }}</span>
+                </div>
+            </div>
+            {% endif %}
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Reading Level Assessment Tool.</p>
+    </footer>
+</body>
+
+</html>

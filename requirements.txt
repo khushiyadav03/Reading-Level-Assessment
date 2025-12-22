@@ -1,0 +1,13 @@
+numpy
+pandas
+scikit-learn
+joblib
+transformers
+torch
+textstat
+nltk
+tqdm
+matplotlib
+seaborn
+shap
+streamlit

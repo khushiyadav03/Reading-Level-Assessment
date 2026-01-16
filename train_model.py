@@ -5,8 +5,10 @@ from src.model import train_model
 from src.utils import save_model
 
 
-df = pd.read_csv("data/raw/commonlitreadabilityprize.csv")
+df = pd.read_csv("commonlitreadabilityprize/commonlitreadabilityprize.csv")
 
+# Sample data for faster training
+df = df.sample(n=min(500, len(df)), random_state=42)
 
 df = df.rename(columns={"excerpt": "text", "target": "score"})
 

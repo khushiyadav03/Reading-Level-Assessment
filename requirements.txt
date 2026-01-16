@@ -11,3 +11,5 @@ matplotlib
 seaborn
 shap
 streamlit
+flask
+gunicorn
